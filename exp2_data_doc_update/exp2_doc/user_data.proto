@@ -1,0 +1,110 @@
+
+message Birthday {
+  optional int32 year = 1;
+  optional int32 month = 2;
+  optional int32 day = 3;
+}
+
+
+// 一些基本的人口学属性内容
+message Demographics {
+  // 用户性别
+  enum Gender {
+    GENDER_UNKNOWN = 0;  // 性别未知
+    GENDER_MALE = 1;  // 男
+    GENDER_FEMALE = 2;  // 女
+  }
+  optional Gender gender = 1 [default = GENDER_UNKNOWN];
+
+  // 上网场景
+  enum SurfScene {
+    SURF_SCENE_PUBLIC = 1;  // 公共场所
+    SURF_SCENE_HOME = 2;  // 家庭
+    SURF_SCENE_OFFICE = 3;  // 办公
+    SURF_SCENE_SCHOOL = 4;  // 学校
+    SURF_SCENE_WIRELESS = 5;  // 无线上网
+  }
+  repeated SurfScene surf_scene = 2;
+
+  // 婚姻状况
+  enum MarriageStatus {
+    MARRIAGE_STATUS_UNKNOWN = 0;  // 未知
+    MARRIAGE_STATUS_SINGLE = 1;  // 单身
+    MARRIAGE_STATUS_HAVE_BABY = 2;  // 育儿
+    MARRIAGE_STATUS_NEWLY_WEDS = 3;  // 新婚
+    MARRIAGE_STATUS_IN_LOVE = 4;  // 恋爱
+    MARRIAGE_STATUS_HAVE_KID = 5;  // 子女教育
+    MARRIAGE_STATUS_MARRIED = 6;  // 已婚
+    MARRIAGE_STATUS_SECRET = 7;  // 保密
+    MARRIAGE_STATUS_ENGAGED = 8;  // 已订婚
+    MARRIAGE_STATUS_SEPARATED = 9;  // 分居
+    MARRIAGE_STATUS_DIVORCED = 10;  // 离异
+  }
+  repeated MarriageStatus marriage_status = 3;
+
+  // 职业状态
+  // Occupation 命名与 targeting_id_allocation.xml 中“职业状态”定向保持一致
+  enum Occupation {
+    OCCUPATION_UNKNOWN = 0;  // 职业状态未知
+    OCCUPATION_SECONDARY_SCHOOL_STUDENT = 1;  // 初高中生
+    OCCUPATION_COLLEGE_STUDENT = 2;  // 大学生
+    OCCUPATION_NEWLY_GRADUATED = 3;  // 刚毕业
+    OCCUPATION_WHITE_COLLAR = 4;  // 白领
+    OCCUPATION_BLUE_COLLAR = 5;  // 蓝领
+    OCCUPATION_MANAGER = 6;  // 企业管理
+    OCCUPATION_RETIRED = 7;  // 退休
+  }
+  optional Occupation occupation = 4 [default = OCCUPATION_UNKNOWN];
+
+  // 学历
+  enum Education {
+    EDUCATION_UNKNOWN = 0;  // 学历未知
+    EDUCATION_DOCTOR = 1;  // 博士
+    EDUCATION_MASTER = 2;  // 硕士
+    EDUCATION_COLLEGE = 3;  // 大学生
+    EDUCATION_HIGH_SCHOOL = 4;  // 高中
+    EDUCATION_MIDDLE_SCHOOL = 5;  // 初中
+    EDUCATION_PRIMARY_SCHOOL = 6;  // 小学
+  }
+  optional Education education = 5 [default = EDUCATION_UNKNOWN];
+
+  // 学校
+  // 该字段在线上没有使用，并且引入考虑的不是很周到，暂时先注释掉
+  enum School {
+    SCHOOL_UNKNOWN = 0;  // 学校类别未知
+    SCHOOL_MAJOR_UNIVERSITY = 1;  // 重点本科
+    SCHOOL_GENERAL_UNIVERSITY = 2;  // 一般本科
+    SCHOOL_COLLEGE = 3;  // 大中专
+    SCHOOL_HIGH_SCHOOL = 4;  // 高中
+    SCHOOL_MIDDLE_SCHOOL = 5;  // 初中
+    SCHOOL_PRIMARY_SCHOOL = 6;  // 小学
+  }
+  // optional School school = 6 [default = SCHOOL_UNKNOWN];
+
+  // 用户职业
+  // Profession 命名与 targeting_id_allocation.xml 中“用户职业”定向保持一致
+  // TODO 线上没有使用到，需要产品关注重新进行用户职业划分
+  enum Profession {
+    PROFESSION_UNKNOWN = 0;  // 用户职业未知
+    PROFESSION_COMPUTER = 1;  // 计算机/互联网/通信/电子
+    PROFESSION_MARKETING = 2;  // 销售/客服/技术支持
+    PROFESSION_FINANCE = 3;  // 会计/金融/银行/保险
+    PROFESSION_MANUFACTURING = 4;  // 生产/营运/采购/物流
+    PROFESSION_HEALTHY = 5;  // 生物/制药/医疗/护理
+    PROFESSION_MEDIA = 6;  // 广告/市场/媒体/艺术
+    PROFESSION_ARCHITECTURE = 7;  // 建筑/房地产
+    PROFESSION_ADMINISTRATION = 8;  // 人事/行政/高级管理
+    PROFESSION_EDUCATION = 9;  // 咨询/法律/教育/科研
+    PROFESSION_SERVICE = 10;  // 服务业
+    PROFESSION_SERVANTS = 11;  // 公务员/翻译
+    PROFESSION_ENGINEERING = 12;  // 工程行业
+  }
+  optional Profession profession = 7 [default = PROFESSION_UNKNOWN];
+
+  optional Birthday birthday = 8;  // 该用户的生日
+
+
+
+}
+
+
