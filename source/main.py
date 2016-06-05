@@ -5,15 +5,24 @@ import dataReader
 import normalization
 import bagging_svm
 import mar
+import KNN_main
+import KNN_check
+import ann
 
 alldatas,lenX,lenY = dataReader.dataRead("../data/exp2_raw_data/modfied11w.out")
 
-newdatas = dataFilter.dataFilter(alldatas)
+newdatas = dataFilter.onlyYearAndClick(alldatas)
 
 newdatas = normalization.max_min(newdatas)
 
-trainData,testData = dataDivider.dataDivide(newdatas, 5)
+trainData,testData = dataDivider.dataDivide(newdatas, 10)
 
-result = mar.getTrain(trainData, testData)
+ann.getTrain(trainData, testData)
 
-print result, len(testData)
+#bagging_svm.bg_svm(trainData, testData, 1, len(trainData))
+
+#print mar.getTrain(trainData, testData)
+
+#KNN_check.getTrain(trainData, testData)
+
+#print result, len(testData)
